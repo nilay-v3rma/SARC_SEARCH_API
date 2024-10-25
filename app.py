@@ -7,11 +7,13 @@ from spellchecker import SpellChecker
 import spacy
 import os
 from dotenv import load_dotenv  # Import dotenv
+from flask_cors import CORS  # Import CORS
 
 # Load environment variables from .env file
 load_dotenv()  # Load the .env file
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for the app
 
 # API Key from environment variable
 API_KEY = os.getenv("API_KEY")  # Get the API key
