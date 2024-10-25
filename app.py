@@ -85,12 +85,7 @@ def search():
     if not results:
         for i, row in faq_df.iterrows():
             if query.lower() in row['question'].lower():
-                category = row['category']
-                faq = {
-                    'question': row['question'],
-                    'answer': row['answer']
-                }
-                results.append({'category': category, 'faqs': [faq]})
+                results.append({'category': row['category'], 'question': row['question'], 'answer': row['answer']})
 
     return jsonify({'query': query, 'results': results})
 
