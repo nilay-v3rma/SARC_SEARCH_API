@@ -74,12 +74,7 @@ def search():
     results = []
     for i, score in enumerate(cosine_similarities):
         if score > 0.1:  # Adjust threshold to filter out weak matches
-            category = faq_df.iloc[i]['category']
-            faq = {
-                'question': faq_df.iloc[i]['question'],
-                'answer': faq_df.iloc[i]['answer']
-            }
-            results.append({'category': category, 'faqs': [faq]})
+            results.append({'category': faq_df.iloc[i]['category'], 'question': faq_df.iloc[i]['question'], 'answer': faq_df.iloc[i]['answer']})
 
     # Fallback to exact or partial string match if no results found
     if not results:
